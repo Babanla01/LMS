@@ -1,0 +1,196 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todolist</title>
+    <link rel="stylesheet" href="todolist.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      .container {
+        width: 100%;
+        min-height: 100vh;
+        background-color: black;
+        padding: 10px;
+      }
+      .todo-app {
+        width: 100%;
+        max-width: 600px;
+        background-color: #fff;
+        margin: 100px auto 20px;
+        padding: 40px 30px 70px;
+      }
+      h2 {
+        margin-bottom: 20px;
+        color: blueviolet;
+      }
+      .input-field {
+        display: flex;
+        justify-content: space-between;
+        background-color: rgb(222, 211, 211);
+        border-radius: 40px;
+        /* align-items:center; */
+      }
+      .input-field input {
+        flex: 1;
+        border: 0;
+        outline: 0;
+        border-radius: 30px;
+        padding: 10px 20px;
+        background-color: transparent;
+        font-size: 16px;
+      }
+      .input-field button {
+        width: 100px;
+        background-color: orangered;
+        padding: 15px;
+        border-radius: 30px;
+        cursor: pointer;
+        border: none;
+        color: white;
+        font-size: 17px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      ul {
+        margin-top: 50px;
+      }
+      li {
+        font-size: 17px;
+        position: relative;
+        padding-left: 40px;
+        margin-bottom: 18px;
+        cursor: pointer;
+      }
+      li.checked {
+        text-decoration: line-through;
+      }
+      li::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        background-color: transparent;
+      }
+      li.checked::before {
+        background-color: orange;
+      }
+      span {
+        position: absolute;
+        right: 20px;
+        top: -5px;
+        font-size: 12px;
+        font-weight: bolder;
+        cursor: pointer;
+        background-color: pink;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="todo-app">
+        <h2>To - Do List</h2>
+        <div class="input-field">
+          <input type="text" placeholder="Add a text" id="input-box" />
+          <button onclick="addBook()">Add</button>
+        </div>
+        <ul id="book-list">
+          <!-- <li>Books Lorem, ipsum dolor<span>X</span></li> -->
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // const data = [
+      //   "The rich also cry",
+      //   "Afago keyin Aparo",
+      //   "The Independence",
+      // ];
+      // getBooks();
+      // function getBooks() {
+      //   const bookList = document.querySelector("#book-list");
+      //   bookList.innerHTML = "";
+      //   data.forEach((element) => {
+      //     bookList.innerHTML += ` <li>${element} <span>x</span> </li> `;
+      //   });
+      // }
+      // function addBook() {
+      //   let value = document.querySelector("#books").value;
+      //   data.push(value);
+      //   getBooks();
+      //   document.querySelector("#books").value = "";
+      // }
+      const inputBox = document.querySelector("#input-box");
+      const listContainer = document.querySelector("#book-list");
+      function addBook() {
+        if (inputBox.value === "") {
+          alert("you must add a task First!");
+        } else {
+          let li = document.createElement("li");
+          li.innerHTML = inputBox.value;
+          listContainer.appendChild(li);
+          let span = document.createElement("span");
+          span.innerHTML = "X";
+          li.appendChild(span);
+        }
+        inputBox.value = "";
+      }
+      // const spans = document.querySelector("span");
+      listContainer.addEventListener("click", function (e) {
+        if (e.target.tagName === "LI") {
+          e.target.classList.toggle("checked");
+        } else if (e.target.tagName === "SPAN") {
+          e.target.parentNode.remove();
+          // li.remove();
+        }
+      });
+      // inputBox.addEventListener("keypress", function (e) {
+      //   if (e.key === "ENTER") {
+      //     // addBook();
+      //     if (inputBox.value === "") {
+      //       alert("you must add a task First!");
+      //     } else {
+      //       let li = document.createElement("li");
+      //       li.innerHTML = inputBox.value;
+      //       listContainer.appendChild(li);
+      //       let span = document.createElement("span");
+      //       span.innerHTML = "X";
+      //       li.appendChild(span);
+      //     }
+      //     inputBox.value = "";
+      //   }
+      // });
+    </script>
+
+    <!-- <script>
+      // const table = [];
+      let multiplier = 1;
+      while (multiplier <= 12) {
+        for (let i = 1; i < 13; i++) {
+          let result = multiplier * i;
+          // table.push(result);
+          // console.log(`${multiplier} * ${i} = ${result}`);
+          // console.log(multiplier + "*" + i + "=" + result);
+          console.log(result);
+        }
+        multiplier++;
+      }
+      console.log(table);
+    </script> -->
+  </body>
+</html>
