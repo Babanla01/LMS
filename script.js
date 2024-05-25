@@ -1,3 +1,4 @@
+
       const inputBox = document.querySelector("#input-box");
       const listContainer = document.querySelector("#book-list");
       function addBook() {
@@ -22,6 +23,4 @@
           // li.remove();
         }
       });
-      // inputBox.addEventListener("keypress", function (e) 
 
-    
